@@ -1,0 +1,13 @@
+<h1><%= t ".title" %></h1>
+
+
+<%= link_to "Login", new_session_path unless authenticated? %>
+<%= link_to "New portfolio", new_portfolio_path if authenticated? %>
+
+<div id="portfolios">
+  <% @portfolios.each do |portfolio| %>
+    <div>
+        <%= link_to portfolio.name, portfolio %>
+    </div>
+  <% end %>
+</div>

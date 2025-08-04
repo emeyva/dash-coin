@@ -1,0 +1,19 @@
+<p><%= link_to "Back", portfolios_path %></p>
+
+
+<section class="portfolio">
+    <%= image_tag @portfolio.featured_image if @portfolio.featured_image.attached? %>
+    <section class="product-info">
+
+        <% cache @portfolio do %>
+            <h1><%= @portfolio.name %></h1>
+            <%= @portfolio.description %>
+        <% end %>
+
+
+        <% if authenticated? %>
+            <%= link_to "Edit", edit_portfolio_path(@portfolio) %>
+            <%= button_to "Delete", @portfolio, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <% end %>
+    </section>
+</section>
